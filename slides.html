@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Home — Senior Capstone Group 11</title>
+<title>Slides — Senior Capstone Group 11</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -909,50 +909,22 @@
     <li><a href="demo.html">Demo</a></li>
   </ul>
 </nav>
-<!-- HERO -->
-<section id="home">
-  <div class="hero-orb orb1"></div>
-  <div class="hero-orb orb2"></div>
-  <div class="hero-orb orb3"></div>
+<!-- PRESENTATION -->
+<section id="presentation" class="section">
+  <div class="section-tag">04 — Slides</div>
+  <h2 class="section-title">Final Presentation</h2>
+  <p class="section-desc">Paste a Google Slides share link or any embeddable presentation URL below to display slides directly on this page.</p>
 
-  <div class="hero-badge">Texas A&amp;M at Qatar &nbsp;·&nbsp; Senior Capstone</div>
-
-  <h1 class="hero-title">
-    <span class="line1">Sign Language</span>
-    <span class="line2">Translation System</span>
-  </h1>
-
-  <p class="hero-sub">
-    A real-time, camera-based assistive system that recognizes ASL hand gestures and converts them into readable text and audible speech.
-  </p>
-
-  <div class="hero-cta">
-    <a href="#about" class="btn-primary">Explore Project</a>
-    <a href="#video" class="btn-ghost">Watch Demo →</a>
-  </div>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-val glow-text">90–92%</span>
-      <span class="stat-label">Accuracy</span>
+  <div class="slides-embed" id="slides-embed">
+    <div class="slides-placeholder" id="slides-placeholder">
+      <span class="big-icon">🖥️</span>
+      <p>Paste a Google Slides or PowerPoint Online embed link to display your presentation here.</p>
+      <div class="slide-url-input">
+        <input type="text" class="url-field" id="slides-url" placeholder="Paste Google Slides / embed URL..."/>
+        <button class="btn-primary" onclick="loadSlides()" style="white-space:nowrap;">Load Slides</button>
+      </div>
     </div>
-    <div class="stat">
-      <span class="stat-val glow-text">&lt;1s</span>
-      <span class="stat-label">Latency</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">64</span>
-      <span class="stat-label">Gestures</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">$50–100</span>
-      <span class="stat-label">Total Cost</span>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Scroll
+    <iframe id="slides-iframe" class="slides-iframe" style="display:none;" allowfullscreen></iframe>
   </div>
 </section>
 
@@ -975,6 +947,19 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2800);
   }
+  function loadSlides() {
+    let url = document.getElementById('slides-url').value.trim();
+    if (!url) return;
+    if (url.includes('docs.google.com/presentation')) {
+      url = url.replace('/edit', '/embed').replace('/pub', '/embed');
+      if (!url.includes('/embed')) url = url + '/embed';
+    }
+    const iframe = document.getElementById('slides-iframe');
+    const placeholder = document.getElementById('slides-placeholder');
+    iframe.src = url; iframe.style.display = 'block'; placeholder.style.display = 'none';
+    showToast('✓ Slides loaded');
+  }
+  document.getElementById('slides-url').addEventListener('keydown', e => { if (e.key === 'Enter') loadSlides(); });
 </script>
 </body>
 </html>

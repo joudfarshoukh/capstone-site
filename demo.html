@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Home — Senior Capstone Group 11</title>
+<title>Demo — Senior Capstone Group 11</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -909,52 +909,28 @@
     <li><a href="demo.html">Demo</a></li>
   </ul>
 </nav>
-<!-- HERO -->
-<section id="home">
-  <div class="hero-orb orb1"></div>
-  <div class="hero-orb orb2"></div>
-  <div class="hero-orb orb3"></div>
+<!-- VIDEO -->
+<div class="section-full" id="video">
+  <div class="section">
+    <div class="section-tag">05 — Demo</div>
+    <h2 class="section-title">Project Demo Video</h2>
+    <p class="section-desc">Watch the Sign Language Translation System in action — real-time gesture recognition, Bluetooth transmission, and audio speech output.</p>
 
-  <div class="hero-badge">Texas A&amp;M at Qatar &nbsp;·&nbsp; Senior Capstone</div>
-
-  <h1 class="hero-title">
-    <span class="line1">Sign Language</span>
-    <span class="line2">Translation System</span>
-  </h1>
-
-  <p class="hero-sub">
-    A real-time, camera-based assistive system that recognizes ASL hand gestures and converts them into readable text and audible speech.
-  </p>
-
-  <div class="hero-cta">
-    <a href="#about" class="btn-primary">Explore Project</a>
-    <a href="#video" class="btn-ghost">Watch Demo →</a>
-  </div>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-val glow-text">90–92%</span>
-      <span class="stat-label">Accuracy</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">&lt;1s</span>
-      <span class="stat-label">Latency</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">64</span>
-      <span class="stat-label">Gestures</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">$50–100</span>
-      <span class="stat-label">Total Cost</span>
+    <div class="video-wrapper" id="video-wrapper">
+      <div class="video-placeholder" id="video-placeholder">
+        <div class="play-btn">▶</div>
+        <p>Paste a YouTube or Vimeo link below to embed your demo video.</p>
+        <div class="slide-url-input">
+          <input type="text" class="url-field" id="video-url" placeholder="https://www.youtube.com/watch?v=..."/>
+          <button class="btn-primary" onclick="loadVideo()">Load Video</button>
+        </div>
+      </div>
+      <div class="video-iframe-wrap" id="video-iframe-wrap">
+        <iframe id="video-iframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
     </div>
   </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-</section>
+</div>
 
 
 <!-- FOOTER -->
@@ -975,6 +951,20 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2800);
   }
+  function loadVideo() {
+    let url = document.getElementById('video-url').value.trim();
+    if (!url) return;
+    let embedUrl = url;
+    const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+    if (ytMatch) embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1`;
+    const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+    if (vimeoMatch) embedUrl = `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
+    document.getElementById('video-iframe').src = embedUrl;
+    document.getElementById('video-iframe-wrap').style.display = 'block';
+    document.getElementById('video-placeholder').style.display = 'none';
+    showToast('✓ Video loaded');
+  }
+  document.getElementById('video-url').addEventListener('keydown', e => { if (e.key === 'Enter') loadVideo(); });
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Home — Senior Capstone Group 11</title>
+<title>About — Senior Capstone Group 11</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -909,52 +909,71 @@
     <li><a href="demo.html">Demo</a></li>
   </ul>
 </nav>
-<!-- HERO -->
-<section id="home">
-  <div class="hero-orb orb1"></div>
-  <div class="hero-orb orb2"></div>
-  <div class="hero-orb orb3"></div>
+<!-- ABOUT -->
+<div class="section-full" id="about">
+  <div class="section">
+    <div class="section-tag">01 — About the Project</div>
+    <h2 class="section-title">Bridging the Communication Gap</h2>
+    <p class="section-desc">
+      Deaf and mute individuals rely on sign language, but most people don't understand it — creating barriers across education, healthcare, and daily life. Our system removes that barrier using AI and computer vision, with no gloves, no wearables, and no expensive hardware.
+    </p>
 
-  <div class="hero-badge">Texas A&amp;M at Qatar &nbsp;·&nbsp; Senior Capstone</div>
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="card-icon">📷</span>
+        <div class="card-title">Camera-Based Vision</div>
+        <p class="card-text">A standard laptop camera captures hand gestures at 30fps with no physical contact or wearable hardware required — making it accessible to everyone.</p>
+      </div>
+      <div class="about-card">
+        <span class="card-icon">🤖</span>
+        <div class="card-title">YOLOv8 AI Model</div>
+        <p class="card-text">A fine-tuned YOLOv8n model delivers real-time gesture detection at 90–92% accuracy under controlled conditions, trained on diverse ASL datasets with data augmentation.</p>
+      </div>
+      <div class="about-card">
+        <span class="card-icon">📡</span>
+        <div class="card-title">Wireless Output</div>
+        <p class="card-text">Recognized gesture labels are transmitted wirelessly via Bluetooth (HC-05) to a custom Arduino-based unit that displays text on an LCD and speaks aloud through a speaker.</p>
+      </div>
+      <div class="about-card">
+        <span class="card-icon">⚡</span>
+        <div class="card-title">Low-Cost & Portable</div>
+        <p class="card-text">Total hardware cost of $50–100 using commodity components — compared to $500+ for glove-based alternatives — making it viable for widespread deployment.</p>
+      </div>
+    </div>
 
-  <h1 class="hero-title">
-    <span class="line1">Sign Language</span>
-    <span class="line2">Translation System</span>
-  </h1>
-
-  <p class="hero-sub">
-    A real-time, camera-based assistive system that recognizes ASL hand gestures and converts them into readable text and audible speech.
-  </p>
-
-  <div class="hero-cta">
-    <a href="#about" class="btn-primary">Explore Project</a>
-    <a href="#video" class="btn-ghost">Watch Demo →</a>
+    <div style="margin-top: 3.5rem;">
+      <div class="section-tag">System Pipeline</div>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.3rem; margin-bottom:1.5rem;">End-to-End Processing Flow</h3>
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="pipe-num">01</div>
+          <div class="pipe-name">Camera Input</div>
+          <div class="pipe-desc">30fps · 1080p · OpenCV capture</div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">02</div>
+          <div class="pipe-name">Preprocessing</div>
+          <div class="pipe-desc">Resize 640×640 · Normalize · Smooth</div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">03</div>
+          <div class="pipe-name">YOLOv8 Inference</div>
+          <div class="pipe-desc">~160ms · 0.60 confidence threshold</div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">04</div>
+          <div class="pipe-name">Bluetooth TX</div>
+          <div class="pipe-desc">HC-05 · 9600 baud · ASCII label</div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">05</div>
+          <div class="pipe-name">Arduino Output</div>
+          <div class="pipe-desc">LCD display + LM386 speaker</div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-val glow-text">90–92%</span>
-      <span class="stat-label">Accuracy</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">&lt;1s</span>
-      <span class="stat-label">Latency</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">64</span>
-      <span class="stat-label">Gestures</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val glow-text">$50–100</span>
-      <span class="stat-label">Total Cost</span>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-</section>
+</div>
 
 
 <!-- FOOTER -->
