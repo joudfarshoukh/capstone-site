@@ -884,6 +884,129 @@
   .glow-text { text-shadow: 0 0 20px rgba(0,229,255,0.4); }
   .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
+
+  /* ── MEETING MINUTES ── */
+  .minutes-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.82), rgba(236,248,255,0.68));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 28px 70px rgba(84, 118, 160, 0.14);
+    position: relative;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .minutes-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple2), #65cfc6);
+  }
+
+  .minutes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .minutes-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .minutes-note {
+    font-family: 'Space Mono', monospace;
+    color: var(--cyan2);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+  }
+
+  .minutes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .minute-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(0, 190, 230, 0.16);
+    border-radius: 12px;
+    transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s, background 0.22s;
+  }
+
+  .minute-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 190, 230, 0.42);
+    box-shadow: var(--glow);
+    background: rgba(255,255,255,0.9);
+  }
+
+  .minute-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .minute-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0,217,255,0.18), rgba(168,85,247,0.12));
+    border: 1px solid rgba(0,190,230,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .minute-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .minute-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 0.08rem;
+  }
+
+  .minute-actions {
+    display: flex;
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 850px) {
+    .minutes-header,
+    .minute-item {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .minute-actions { width: 100%; }
+    .minute-actions .btn-sm { text-align: center; flex: 1; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
@@ -951,6 +1074,28 @@
       </div>
     </div>
   </div>
+
+  <div class="minutes-card">
+    <div class="minutes-header">
+      <div>
+        <div class="minutes-title">Meeting Minutes</div>
+        <div class="minutes-note">Team progress records</div>
+      </div>
+    </div>
+
+    <div class="minutes-list">
+      <div class="minute-item">
+        <div class="minute-left">
+          <div class="minute-icon">📝</div>
+          <div>
+            <div class="minute-name">Meeting Minutes</div>
+            <div class="minute-meta">Files to be added</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 
