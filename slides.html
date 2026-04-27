@@ -912,22 +912,30 @@
 <!-- PRESENTATION -->
 <section id="presentation" class="section">
   <div class="section-tag">04 — Slides</div>
-  <h2 class="section-title">Final Presentation</h2>
-  <p class="section-desc">Paste a Google Slides share link or any embeddable presentation URL below to display slides directly on this page.</p>
+  <h2 class="section-title">Project Slides</h2>
+  <p class="section-desc">View the senior capstone presentation files directly on this page.</p>
 
-  <div class="slides-embed" id="slides-embed">
-    <div class="slides-placeholder" id="slides-placeholder">
-      <span class="big-icon">🖥️</span>
-      <p>Paste a Google Slides or PowerPoint Online embed link to display your presentation here.</p>
-      <div class="slide-url-input">
-        <input type="text" class="url-field" id="slides-url" placeholder="Paste Google Slides / embed URL..."/>
-        <button class="btn-primary" onclick="loadSlides()" style="white-space:nowrap;">Load Slides</button>
+  <div class="slides-embed" id="slides-embed" style="aspect-ratio:auto; min-height: 780px; padding: 1.5rem; align-items: stretch;">
+    <div style="width:100%; margin-bottom:1rem;">
+      <div class="report-item" style="border-radius:6px;">
+        <div class="report-left">
+          <div class="report-icon">📊</div>
+          <div>
+            <div class="report-name">Presentation 1</div>
+            <div class="report-meta">Embedded Google Drive PDF</div>
+          </div>
+        </div>
       </div>
     </div>
-    <iframe id="slides-iframe" class="slides-iframe" style="display:none;" allowfullscreen></iframe>
+
+    <iframe
+      src="https://drive.google.com/file/d/1ZWEKnr2Mjs6f7SqnrgQC0HMjdfzacFIB/preview"
+      style="width:100%; height:700px; border:none; border-radius:6px; background:var(--bg3);"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
   </div>
 </section>
-
 
 <!-- FOOTER -->
 <footer>
@@ -947,19 +955,6 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2800);
   }
-  function loadSlides() {
-    let url = document.getElementById('slides-url').value.trim();
-    if (!url) return;
-    if (url.includes('docs.google.com/presentation')) {
-      url = url.replace('/edit', '/embed').replace('/pub', '/embed');
-      if (!url.includes('/embed')) url = url + '/embed';
-    }
-    const iframe = document.getElementById('slides-iframe');
-    const placeholder = document.getElementById('slides-placeholder');
-    iframe.src = url; iframe.style.display = 'block'; placeholder.style.display = 'none';
-    showToast('✓ Slides loaded');
-  }
-  document.getElementById('slides-url').addEventListener('keydown', e => { if (e.key === 'Enter') loadSlides(); });
 </script>
 </body>
 </html>
